@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>EC2208 Revision session</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/solarized.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="mystyle.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="index_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="index_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<section>
+<h1>
+EC2208 Revision session
+</h1>
+<p>April 22, 2022</p>
+<p><br></p>
+<h2>
+<a href="mailto:jesper.bagger@rhul.ac.uk">Jesper Bagger</a>
+</h2>
+<h3>
+EC2208 | Royal Holloway | 2021/22
+</h3>
+</section>
+</section>
+<section id="session-plan" class="title-slide slide level1"><h1>Session plan</h1><ol type="1">
+<li><p>Some good advice</p></li>
+<li><p>Homo- and heteroskedasticity, <span class="math inline">\(t\)</span>-tests, and CIs</p></li>
+<li><p>A question from last year’s EC2203 paper</p></li>
+<li><p>Questions from the audience</p></li>
+</ol></section>
+<section><section id="some-good-advice" class="title-slide slide level1"><h1>Some good advice</h1></section><section id="some-facts" class="slide level2">
+<h2>Some facts</h2>
+<ul>
+<li><p>The exam is online and takes place May 10 (check your timetable!)</p></li>
+<li><p>Paper: two problems (each 50 marks) with subquestions</p></li>
+<li><p>EC calculators are permitted</p></li>
+<li><p>Relevant statistical tables are attached</p></li>
+<li><p>You will not be asked to produce code. You will be asked to use and interpret estimated regression models.</p></li>
+</ul>
+</section><section id="exam" class="slide level2">
+<h2>Exam</h2>
+<ul>
+<li><p>The exam is designed to test your understanding of the material. You are expected to think and to use the techniques/methods/topics we have been working with.</p></li>
+<li><p>Take your time to read and understand the question</p></li>
+<li><p>Take your time to think about the answer</p></li>
+<li><p>Do your best to provide precise and concise answers. Verbosity is not rewarded.</p></li>
+</ul>
+</section><section id="behavioral-advice" class="slide level2">
+<h2>Behavioral advice</h2>
+<ul>
+<li><p>Exams involve risk and uncertainty. You need to deal with this. How?</p></li>
+<li><p>My two cents:</p>
+<ul>
+<li><p>Be well prepared on the day of the exam</p></li>
+<li><p>Be well rested on the day of the exam</p></li>
+<li><p>Find people to talk to who can calm you down during revision</p></li>
+</ul></li>
+<li><p>View exams as a learning experience</p></li>
+</ul>
+</section><section id="comfort" class="slide level2">
+<h2>Comfort</h2>
+<ul>
+<li><p>The exam is fair and doable</p></li>
+<li><p>Noone is trying to trick you, or to put you down. We all want you to succeed <span class="math inline">\(\Rightarrow\)</span> The exam will be marked fairly</p></li>
+<li><p>Any one exam is unlikely to have a large impact on your overall grade or degree classification</p></li>
+</ul>
+</section></section>
+<section><section id="the-sampling-distribution-of-the-ols-estimator" class="title-slide slide level1"><h1>The sampling distribution of the OLS estimator</h1></section><section id="large-sample-approximation-to-sampling-distribution" class="slide level2">
+<h2>Large-sample approximation to sampling distribution</h2>
+<ul>
+<li><p>Population regression model</p>
+<p><span class="math display">\[Score_i = \beta_0 + \beta_1 STR_i + u_i; \quad i = 1,\ldots,n\]</span></p></li>
+<li><p>OLS estimator of <span class="math inline">\(\beta_1\)</span>:</p>
+<p><span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^n (Score_i - \overline{Score})(STR_i - \overline{STR})}{\sum_{i=1}^n (STR_i - \overline{STR})^2}\]</span></p></li>
+<li><p>OLS estimator <span class="math inline">\(\hat{\beta}_1\)</span> is asymptotically normally distributed:</p>
+<p><span class="math display">\[\hat{\beta}_1 \overset{\text{approx}}{\sim} \mathcal{N}\left(\beta_1,\sigma^2_{\hat{\beta}_1} \right)\]</span></p></li>
+<li><p>Assume for now that we have estimator of <span class="math inline">\(\sigma^2_{\hat{\beta}_1}\)</span> denoted <span class="math inline">\(\hat{\sigma}^2_{\hat{\beta}_1}\)</span></p></li>
+</ul>
+</section></section>
+<section><section id="hypothesis-testing" class="title-slide slide level1"><h1>Hypothesis testing</h1></section><section id="is-beta_10" class="slide level2">
+<h2>Is <span class="math inline">\(\beta_1=0?\)</span></h2>
+<ul>
+<li><p>That is an impossible question to answer with certainty (we observe <span class="math inline">\(\hat{\beta}_1\)</span>, not <span class="math inline">\(\beta_1\)</span>)</p></li>
+<li><p>It is meaningful to ask whether the data at hand (i.e. the observed value of <span class="math inline">\(\hat{\beta}_1\)</span>) make it very unlikely that <span class="math inline">\(\beta_1=0?\)</span></p></li>
+<li><p>We answer this question by posing a hypothesis abut the value of <span class="math inline">\(\beta_1\)</span> and testing it; here (w/ 2-sided alternative),</p>
+<p><span class="math display">\[H_0: \, \beta_1 = 0; \quad H_1: \, \beta_1 \neq 0\]</span></p></li>
+</ul>
+</section><section id="alternative-presentations-of-estimated-regression" class="slide level2">
+<h2>Alternative presentations of estimated regression</h2>
+<p><span class="math display">\[\widehat{Score}_i = \underset{(9.468)}{698.9} -\underset{(0.480)}{2.28} STR_i\]</span> <span class="math display">\[R^2 = 0.051; \,\, SER = 18.58\]</span></p>
+<pre><code>## 
+## Call:
+## lm(formula = Score ~ STR, data = CASchools)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -47.727 -14.251   0.483  12.822  48.540 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 698.9329     9.4675  73.825  &lt; 2e-16 ***
+## STR          -2.2798     0.4798  -4.751 2.78e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 18.58 on 418 degrees of freedom
+## Multiple R-squared:  0.05124,    Adjusted R-squared:  0.04897 
+## F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06</code></pre>
+</section><section id="the-t-statistic" class="slide level2">
+<h2>The <span class="math inline">\(t\)</span>-statistic</h2>
+<ul>
+<li><p>When <span class="math inline">\(H_0: \beta_1 = 0\)</span> is <strong>true</strong>, <span class="math inline">\(\hat{\beta}_1 \overset{\text{approx}}{\sim} \mathcal{N}(0,\hat{\sigma}^2_{\hat{\beta}_1})\)</span>.</p></li>
+<li><p>The <span class="math inline">\(t\)</span>-statistic is the OLS estimator standardized with respect to the hypothesized value:</p>
+<p><span class="math display">\[t = \frac{\hat{\beta}_1-0}{\hat{\sigma}_{\hat{\beta}_1}} \overset{\text{approx}}{\sim} \mathcal{N}\left(0,1 \right)\]</span></p>
+<p>where <span class="math inline">\(\hat{\sigma}_{\hat{\beta}_1} = \sqrt{\hat{\sigma}_{\hat{\beta}_1}^2}\)</span> is the standard error of <span class="math inline">\(\hat{\beta}_1\)</span></p></li>
+</ul>
+<!-- - The $p$-value of the $t$-statistic is $p = 2\Phi\left( - | t | \right)$, where $\Phi(z)$ is the standard normal CDF -->
+<!-- ## The $p$-value -->
+<!-- <div class="box"> -->
+<!-- The $p$-value is the probability of observing a $t$-statistic that is at least as *adverse* to the null as the $t$-value actually computed using the sampled data. -->
+<!-- </div> -->
+<!-- ## The $p$-value for $H_0:\, \beta_1 = 0$ -->
+<!-- $$t = \frac{-2.28 - 0}{0.48} = -4.75$$ -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE, out.width = "70%"} -->
+<!-- # Plot the standard normal on the support [-6,6] -->
+<!-- t <- seq(-6, 6, 0.01) -->
+<!-- par(mar = c(4.1,4.1,0.1,4.1)) -->
+<!-- plot(x = t,  -->
+<!--      y = dnorm(t, 0, 1),  -->
+<!--      type = "l",  -->
+<!--      col = "blue",  -->
+<!--      lwd = 3,  -->
+<!--      yaxs = "i", -->
+<!--      ylab = "Density", -->
+<!--      xaxt="n", -->
+<!--      xlab = "t-value", -->
+<!--      ylim = c(0, 0.45) ) -->
+<!-- tact <- -4.75 -->
+<!-- axis(1, at = c(0, -1.96, 1.96, -tact, tact)) -->
+<!-- # Shade the critical regions using polygon(): -->
+<!-- #critical region in left tail -->
+<!-- polygon(x = c(-6, seq(-6, -4.75, 0.01), -4.75), -->
+<!--         y = c(0, dnorm(seq(-6, -4.75, 0.01)), 0), -->
+<!--         col = 'red') -->
+<!-- # critical region in right tail -->
+<!-- polygon(x = c(4.75, seq(4.75, 6, 0.01), 6), -->
+<!--         y = c(0, dnorm(seq(4.75, 6, 0.01)), 0), -->
+<!--         col = 'red') -->
+<!-- # Add arrows and texts indicating critical regions and the p-value -->
+<!-- # arrows(-3.5, 0.2, -2.5, 0.02, length = 0.1) -->
+<!-- # arrows(3.5, 0.2, 2.5, 0.02, length = 0.1) -->
+<!-- arrows(-5, 0.16, -4.75, 0, length = 0.1) -->
+<!-- arrows(5, 0.16, 4.75, 0, length = 0.1) -->
+<!-- # text(-3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- # text(3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- text(-5, 0.18,  -->
+<!--      labels = expression(paste("-|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- text(5, 0.18,  -->
+<!--      labels = expression(paste("|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- ``` -->
+<!-- ## The $p$-value for $H_0:\, \beta_1 = -2$ -->
+<!-- $$t = \frac{-2.28 - (-2)}{0.48} = -0.54$$ -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE, out.width = "70%"} -->
+<!-- # Plot the standard normal on the support [-6,6] -->
+<!-- t <- seq(-6, 6, 0.01) -->
+<!-- par(mar = c(4.1,4.1,0.1,4.1)) -->
+<!-- plot(x = t,  -->
+<!--      y = dnorm(t, 0, 1),  -->
+<!--      type = "l",  -->
+<!--      col = "blue",  -->
+<!--      lwd = 3,  -->
+<!--      yaxs = "i", -->
+<!--      ylab = "Density", -->
+<!--      xaxt="n", -->
+<!--      xlab = "t-value", -->
+<!--      ylim = c(0, 0.45) ) -->
+<!-- tact <- -0.54 -->
+<!-- axis(1, at = c(0, -1.96, 1.96, -tact, tact)) -->
+<!-- # Shade the critical regions using polygon(): -->
+<!-- #critical region in left tail -->
+<!-- polygon(x = c(-6, seq(-6, -0.54, 0.01), -0.54), -->
+<!--         y = c(0, dnorm(seq(-6, -0.54, 0.01)), 0), -->
+<!--         col = 'gray90') -->
+<!-- # critical region in right tail -->
+<!-- polygon(x = c(0.54, seq(0.54, 6, 0.01), 6), -->
+<!--         y = c(0, dnorm(seq(0.54, 6, 0.01)), 0), -->
+<!--         col = 'gray90') -->
+<!-- # Add arrows and texts indicating critical regions and the p-value -->
+<!-- # arrows(-3.5, 0.2, -2.5, 0.02, length = 0.1) -->
+<!-- # arrows(3.5, 0.2, 2.5, 0.02, length = 0.1) -->
+<!-- arrows(-5, 0.16, -0.54, 0, length = 0.1) -->
+<!-- arrows(5, 0.16, 0.54, 0, length = 0.1) -->
+<!-- # text(-3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- # text(3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- text(-5, 0.18,  -->
+<!--      labels = expression(paste("-|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- text(5, 0.18,  -->
+<!--      labels = expression(paste("|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- ``` -->
+</section><section id="the-t-test" class="slide level2">
+<h2>The <span class="math inline">\(t\)</span>-test</h2>
+<ul>
+<li><p>Fix <strong>significance level</strong> <span class="math inline">\(\alpha\)</span> (e.g. <span class="math inline">\(\alpha = 0.05\)</span>) and apply the rule:</p>
+<div class="box">
+<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\alpha\)</span>; otherwise, do not reject <span class="math inline">\(H_0\)</span>,</p>
+</div>
+<p>or equivalently, apply the rule:</p>
+<div class="box">
+<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; z_{1-\alpha/2}\)</span>, where the <strong>critical value</strong> <span class="math inline">\(z_{1-\alpha/2}\)</span> is <span class="math inline">\((1-\alpha/2)\times 100\)</span> percentile in <span class="math inline">\(\mathcal{N}(0,1)\)</span></p>
+</div></li>
+<li><p>Note, for <span class="math inline">\(\alpha = 0.05\)</span>, the critical value is <span class="math inline">\(z_{0.975} = 1.96\)</span></p></li>
+</ul>
+<!-- ## Significance levels and critical values -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE, out.width = "70%"} -->
+<!-- # Plot the standard normal on the support [-6,6] -->
+<!-- t <- seq(-6, 6, 0.01) -->
+<!-- par(mar = c(4.1,4.1,0.1,4.1)) -->
+<!-- plot(x = t,  -->
+<!--      y = dnorm(t, 0, 1),  -->
+<!--      type = "l",  -->
+<!--      col = "blue",  -->
+<!--      lwd = 3,  -->
+<!--      yaxs = "i", -->
+<!--      ylab = "Density", -->
+<!--      xaxt="n", -->
+<!--      xlab = "t-value", -->
+<!--      ylim = c(0, 0.45) ) -->
+<!-- tact <- -0.54 -->
+<!-- axis(1, at = c(0, -1.96, 1.96, -tact, tact,-4.75,4.75)) -->
+<!-- # Shade the critical regions using polygon(): -->
+<!-- #critical region in left tail -->
+<!-- polygon(x = c(-6, seq(-6, -1.96, 0.01), -1.96), -->
+<!--         y = c(0, dnorm(seq(-6, -1.96, 0.01)), 0), -->
+<!--         col = 'gray90') -->
+<!-- # critical region in right tail -->
+<!-- polygon(x = c(1.96, seq(1.96, 6, 0.01), 6), -->
+<!--         y = c(0, dnorm(seq(1.96, 6, 0.01)), 0), -->
+<!--         col = 'gray90') -->
+<!-- # Add arrows and texts indicating critical regions and the p-value -->
+<!-- arrows(-3.5, 0.25, -2.5, 0.02, length = 0.1) -->
+<!-- arrows(3.5, 0.25, 2.5, 0.02, length = 0.1) -->
+<!-- arrows(-5, 0.16, -0.54, 0, length = 0.1) -->
+<!-- arrows(5, 0.16, 0.54, 0, length = 0.1) -->
+<!-- arrows(-5, 0.16, -4.75, 0, length = 0.1) -->
+<!-- arrows(5, 0.16, 4.75, 0, length = 0.1) -->
+<!-- text(-3.5, 0.27, -->
+<!--      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!--      cex = 2) -->
+<!-- text(3.5, 0.27, -->
+<!--      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!--      cex = 2) -->
+<!-- text(-5, 0.18,  -->
+<!--      labels = expression(paste("-|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- text(5, 0.18,  -->
+<!--      labels = expression(paste("|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- ``` -->
+</section></section>
+<section><section id="estimating-the-variance-of-hatbeta_1" class="title-slide slide level1"><h1>Estimating the variance of <span class="math inline">\(\hat{\beta}_1\)</span></h1></section><section id="hetero--and-homoskedasticity" class="slide level2">
+<h2>Hetero- and homoskedasticity</h2>
+<ul>
+<li><p>To compute the <span class="math inline">\(t\)</span>-statistic we need to know <span class="math inline">\(\hat{\sigma}_{\hat{\beta}_1} = \sqrt{\hat{\sigma}_{\hat{\beta}_1}^2}\)</span></p></li>
+<li><p>The specific formula <span class="math inline">\(\hat{\sigma}_{\hat{\beta}_1}^2\)</span> depends on the conditional error variance <span class="math inline">\(\mathrm{var}(u_i|X_i)\)</span> in the population regression model</p></li>
+<li><p>If <span class="math inline">\(\mathrm{var}(u_i|X_i)\)</span> does not depend on the regressor value <span class="math inline">\(X_i\)</span>, we say the errors are <strong>homoskedastic</strong></p></li>
+<li><p>If <span class="math inline">\(\mathrm{var}(u_i|X_i)\)</span> is a function of the regressor value <span class="math inline">\(X_i\)</span>, we say the errors are <strong>heteroskedastic</strong></p></li>
+</ul>
+</section><section id="the-value-of-a-year-of-education" class="slide level2">
+<h2>The value of a year of education</h2>
+<p><span class="math display">\[AHE_i = \beta_0 + \beta_1 YoEd_i + u_i; \quad i=1,\ldots,n\]</span></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" /><!-- --></p>
+<!-- ## The value of a year of education in R -->
+<!-- $$AHE_i = \beta_0 + \beta_1 YoEd_i + u_i; \quad i=1,\ldots,n$$ -->
+<!-- ```{r echo=TRUE, eval = FALSE, error=FALSE, warning=FALSE} -->
+<!-- library(AER) # include Applied Econometrics with R library -->
+<!-- data(CPSSWEducation) # Load CPSSWEducation data -->
+<!-- lm1 <- lm(earnings ~ education, data = CPSSWEducation) # Fitted model in lm1 -->
+<!-- # Scatter plot -->
+<!-- plot(CPSSWEducation$education,CPSSWEducation$earnings, -->
+<!--      main = "March 2016 Current Population Survey (US)", -->
+<!--      col = "blue", -->
+<!--      xlab = "Years of education", -->
+<!--      ylab = "Average hourly earnings (dollars)", -->
+<!--      ylim = c(0, 100)) -->
+<!-- abline(lm1, -->
+<!--        lwd = 3, -->
+<!--        col = "red") -->
+<!-- ``` -->
+</section><section id="the-residual-value-of-a-year-of-education" class="slide level2">
+<h2>The residual value of a year of education</h2>
+<p><span class="math display">\[\hat{u}_i = AHE_i - \hat{\beta}_0 - \hat{\beta}_1 YoEd_i; \quad i=1,\ldots,n\]</span></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" /><!-- --></p>
+<!-- ## The residual value of a year of education in R -->
+<!-- ```{r echo=TRUE, eval = FALSE, error=FALSE, warning=FALSE} -->
+<!-- # Scatter plot -->
+<!-- plot(CPSSWEducation$education,lm1$residuals, -->
+<!--      main = "March 2016 Current Population Survey (US)", -->
+<!--      col = "blue", -->
+<!--      xlab = "Years of education", -->
+<!--      ylab = "Residuals") -->
+<!-- ``` -->
+<!-- ## The conditional residual variance -->
+<!-- ```{r echo=TRUE, eval = TRUE, error=FALSE, warning=FALSE, include=FALSE} -->
+<!-- # Conditional residual variance -->
+<!-- c(var(lm1$residuals[(CPSSWEducation$education <= 9)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 9)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 10)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 11)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 12)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 13)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 14)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 16)]), -->
+<!--   var(lm1$residuals[(CPSSWEducation$education == 18)])) -->
+<!-- ``` -->
+<!-- $$\hat{u}_i = AHE_i - \hat{\beta}_0 - \hat{\beta}_1 YoEd_i; \quad i=1,\ldots,n$$ -->
+<!-- <br> -->
+<!-- | $YoEd_i$                         | $\leq$ 9| 10      | 11      | 12      | 13      | 14      | 16      | 18      | -->
+<!-- | -------------------------------- | -------:| -------:| -------:| -------:| -------:| -------:| -------:| -------:| -->
+<!-- | $\mathrm{var}(\hat{u}_i|YoEd_i)$ | 22.5    | 29.8    | 26.3    | 55.3    | 64.8    | 67.7    | 116.2   | 139.6   | -->
+<!-- ## The conditional residual variance in R -->
+<!-- ```{r echo=TRUE, eval = TRUE, error=FALSE, warning=FALSE} -->
+<!-- # Conditional residual variance -->
+<!-- var(lm1$residuals[(CPSSWEducation$education == 14)]) -->
+<!-- ``` -->
+<!-- ## Estimating the variance of $\hat{\beta}_1$ -->
+<!-- - **Homoskedastic errors** has $\mathrm{var}(u_i|X_i) = \sigma^2_u$; then, -->
+<!--   $$\hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n}\times\frac{\frac{1}{n-2}\sum_{i=1}^n \hat{u}_i^2}{\frac{1}{n-1}\sum_{i=1}^n (X_i - \overline{X})^2}$$ -->
+<!-- - **Heteroskedastic errors**, where $\mathrm{var}(u_i|X_i)$ depends on $X_i$ is the general and empirically relevant case. -->
+<!--   $$\hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n}\times\frac{\frac{1}{n-2}\sum_{i=1}^n (X_i - \overline{X})^2 \hat{u}_i^2}{\left[\frac{1}{n-1}\sum_{i=1}^n (X_i - \overline{X})^2\right]^2}$$ -->
+</section><section id="standard-error-of-hatbeta_1" class="slide level2">
+<h2>Standard error of <span class="math inline">\(\hat{\beta}_1\)</span></h2>
+<ul>
+<li><p><strong>Homoskedasticity-only standard error</strong> of <span class="math inline">\(\hat{\beta}_1\)</span>:</p>
+<p><span class="math display">\[\hat{\sigma}_{\hat{\beta}_1} = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}} = \sqrt{\frac{1}{n}\times\frac{\frac{1}{n-2}\sum_{i=1}^n \hat{u}_i^2}{\frac{1}{n-1}\sum_{i=1}^n (X_i - \overline{X})^2}}\]</span></p></li>
+<li><p><strong>Heteroskedasticity robust standard error</strong> of <span class="math inline">\(\hat{\beta}_1\)</span>:</p>
+<p><span class="math display">\[\hat{\sigma}_{\hat{\beta}_1} = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}} = \sqrt{\frac{1}{n}\times\frac{\frac{1}{n-2}\sum_{i=1}^n (X_i - \overline{X})^2 \hat{u}_i^2}{\left[\frac{1}{n-1}\sum_{i=1}^n (X_i - \overline{X})^2\right]^2}}\]</span></p></li>
+</ul>
+</section><section id="heteroskedasticity-robust-standard-errors" class="slide level2">
+<h2>Heteroskedasticity robust standard errors</h2>
+<ul>
+<li><p>The heteroskedasticity robust standard error of <span class="math inline">\(\hat{\beta}_1\)</span> is valid also when errors are homoskedastic</p></li>
+<li><p>The homoskedasticity-only standard error of <span class="math inline">\(\hat{\beta}_1\)</span> is valid <em>only</em> when errors are homoskedastic</p></li>
+<li><p>You should <strong>always</strong> use heteroskedasticity robust standard errors in applications of regression analysis</p></li>
+</ul>
+</section><section id="homoskedasticity-only-standard-errors" class="slide level2">
+<h2>Homoskedasticity-only standard errors</h2>
+<p><span class="math display">\[\widehat{AHE}_i = -\underset{(0.959)}{3.134} + \underset{(0.070)}{1.467} YoEd_i\]</span> <span class="math display">\[R^2 = 0.130; SER = 8.769\]</span></p>
+<pre><code>## 
+## Call:
+## lm(formula = earnings ~ education, data = CPSSWEducation)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -17.270  -5.355  -1.513   3.194  77.164 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -3.13437    0.95925  -3.268   0.0011 ** 
+## education    1.46693    0.06978  21.021   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.769 on 2948 degrees of freedom
+## Multiple R-squared:  0.1304, Adjusted R-squared:  0.1301 
+## F-statistic: 441.9 on 1 and 2948 DF,  p-value: &lt; 2.2e-16</code></pre>
+</section><section id="heteroskedasticity-robust-standard-errors-1" class="slide level2">
+<h2>Heteroskedasticity robust standard errors</h2>
+<p><span class="math display">\[\widehat{AHE}_i = -\underset{(0.926)}{3.134} + \underset{(0.072)}{1.467} YoEd_i\]</span> <span class="math display">\[R^2 = 0.130; SER = 8.769\]</span></p>
+<pre><code>## Parameter   | Coefficient |    SE |         95% CI | t(2948) |      p
+## ---------------------------------------------------------------------
+## (Intercept) |      -3.134 | 0.926 | [-4.95, -1.32] |  -3.385 | &lt; .001
+## education   |       1.467 | 0.072 | [ 1.33,  1.61] |  20.390 | &lt; .001</code></pre>
+<!-- ## Homoskedasticity-only standard errors in R -->
+<!-- ```{r echo=TRUE, eval = TRUE, error=FALSE, warning=FALSE} -->
+<!-- # Score-STR regression (lm1) -->
+<!-- # Regression output with homoskedastic-only SEs -->
+<!-- summary(lm1) -->
+<!-- ``` -->
+<!-- ## The $p$-value for homoskedasticity-only SE -->
+<!-- $$H_0:\, \beta_1 = 0; \quad t = \frac{-2.28 - 0}{0.48} = -4.75$$ -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE, out.width = "70%"} -->
+<!-- # Plot the standard normal on the support [-6,6] -->
+<!-- t <- seq(-6, 6, 0.01) -->
+<!-- par(mar = c(4.1,4.1,0.1,4.1)) -->
+<!-- plot(x = t,  -->
+<!--      y = dnorm(t, 0, 1),  -->
+<!--      type = "l",  -->
+<!--      col = "blue",  -->
+<!--      lwd = 3,  -->
+<!--      yaxs = "i", -->
+<!--      ylab = "Density", -->
+<!--      xaxt="n", -->
+<!--      xlab = "t-value", -->
+<!--      ylim = c(0, 0.45) ) -->
+<!-- tact <- -4.75 -->
+<!-- axis(1, at = c(0, -1.96, 1.96, -tact, tact)) -->
+<!-- # Shade the critical regions using polygon(): -->
+<!-- #critical region in left tail -->
+<!-- polygon(x = c(-6, seq(-6, -4.75, 0.01), -4.75), -->
+<!--         y = c(0, dnorm(seq(-6, -4.75, 0.01)), 0), -->
+<!--         col = 'red') -->
+<!-- # critical region in right tail -->
+<!-- polygon(x = c(4.75, seq(4.75, 6, 0.01), 6), -->
+<!--         y = c(0, dnorm(seq(4.75, 6, 0.01)), 0), -->
+<!--         col = 'red') -->
+<!-- # Add arrows and texts indicating critical regions and the p-value -->
+<!-- # arrows(-3.5, 0.2, -2.5, 0.02, length = 0.1) -->
+<!-- # arrows(3.5, 0.2, 2.5, 0.02, length = 0.1) -->
+<!-- arrows(-5, 0.16, -4.75, 0, length = 0.1) -->
+<!-- arrows(5, 0.16, 4.75, 0, length = 0.1) -->
+<!-- # text(-3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- # text(3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- text(-5, 0.18,  -->
+<!--      labels = expression(paste("-|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- text(5, 0.18,  -->
+<!--      labels = expression(paste("|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- ``` -->
+<!-- ## Heteroskedasticity robust standard errors in R -->
+<!-- ```{r echo=TRUE, eval = TRUE, error=FALSE, warning=FALSE} -->
+<!-- # Score-STR regression (lm1) -->
+<!-- # Regression output with heteroskedastic robust SEs -->
+<!-- parameters(lm1, robust = TRUE, vcov_type = "HC1") -->
+<!-- ``` -->
+<!-- ## The $p$-value for heteroskedasticity robust SE -->
+<!-- $$H_0:\, \beta_1 = 0; \quad t = \frac{-2.28 - 0}{0.52} = -4.39$$ -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE, out.width = "70%"} -->
+<!-- # Plot the standard normal on the support [-6,6] -->
+<!-- t <- seq(-6, 6, 0.01) -->
+<!-- par(mar = c(4.1,4.1,0.1,4.1)) -->
+<!-- plot(x = t,  -->
+<!--      y = dnorm(t, 0, 1),  -->
+<!--      type = "l",  -->
+<!--      col = "blue",  -->
+<!--      lwd = 3,  -->
+<!--      yaxs = "i", -->
+<!--      ylab = "Density", -->
+<!--      xaxt="n", -->
+<!--      xlab = "t-value", -->
+<!--      ylim = c(0, 0.45) ) -->
+<!-- tact <- -4.39 -->
+<!-- axis(1, at = c(0, -1.96, 1.96, -tact, tact)) -->
+<!-- # Shade the critical regions using polygon(): -->
+<!-- #critical region in left tail -->
+<!-- polygon(x = c(-6, seq(-6, -4.39, 0.01), -4.39), -->
+<!--         y = c(0, dnorm(seq(-6, -4.39, 0.01)), 0), -->
+<!--         col = 'red') -->
+<!-- # critical region in right tail -->
+<!-- polygon(x = c(4.39, seq(4.39, 6, 0.01), 6), -->
+<!--         y = c(0, dnorm(seq(4.39, 6, 0.01)), 0), -->
+<!--         col = 'red') -->
+<!-- # Add arrows and texts indicating critical regions and the p-value -->
+<!-- # arrows(-3.5, 0.2, -2.5, 0.02, length = 0.1) -->
+<!-- # arrows(3.5, 0.2, 2.5, 0.02, length = 0.1) -->
+<!-- arrows(-5, 0.16, -4.39, 0, length = 0.1) -->
+<!-- arrows(5, 0.16, 4.39, 0, length = 0.1) -->
+<!-- # text(-3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- # text(3.5, 0.22,  -->
+<!-- #      labels = expression("0.025"~"="~over(alpha, 2)), -->
+<!-- #      cex = 0.7) -->
+<!-- text(-5, 0.18,  -->
+<!--      labels = expression(paste("-|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- text(5, 0.18,  -->
+<!--      labels = expression(paste("|",t,"|")),  -->
+<!--      cex = 2) -->
+<!-- ``` -->
+</section></section>
+<section><section id="confidence-intervals" class="title-slide slide level1"><h1>Confidence intervals</h1></section><section id="many-many-t-tests" class="slide level2">
+<h2>Many, many <span class="math inline">\(t\)</span>-tests</h2>
+<ul>
+<li><p>Thought experiment: test all possible hypothesized values for <span class="math inline">\(\beta_1\)</span> with 5% significance level, record rejections and non-rejections</p></li>
+<li><p>Given <span class="math inline">\(\hat{\beta}_1\)</span> and <span class="math inline">\(\hat{\sigma}_{\hat{\beta}_1}\)</span>, which hypothesized values <span class="math inline">\(\beta_{1,0}\)</span> for <span class="math inline">\(\beta_1\)</span> are not rejected?</p>
+<p><span class="math display">\[\left| \frac{\hat{\beta}_1-\beta_{1,0}}{\hat{\sigma}_{\hat{\beta}_1}} \right| &lt; 1.96\]</span></p></li>
+</ul>
+</section><section id="confidence-interval" class="slide level2">
+<h2>95%-confidence interval</h2>
+<ul>
+<li><p>We fail to reject <span class="math inline">\(H_0: \beta_1 = \beta_{1,0}\)</span> for <span class="math inline">\(\beta_{1,0}\)</span> in the interval:</p>
+<div class="box">
+<p><span class="math display">\[\hat{\beta}_1-1.96 \times \hat{\sigma}_{\hat{\beta}_1}  \leq   \beta_{1,0} \leq \hat{\beta}_1+ 1.96\times \hat{\sigma}_{\hat{\beta}_1}\]</span></p>
+</div></li>
+<li><p>A range of <span class="math inline">\(\beta_1\)</span>-values, all of which are consistent with the estimate <span class="math inline">\(\hat{\beta}_1\)</span>, is called a <strong>95%-confidence interval</strong> for <span class="math inline">\(\beta_1\)</span></p>
+<div class="box">
+<p><span class="math display">\[CI_{\beta_1,0.95} = \left[\hat{\beta}_1-1.96 \times \hat{\sigma}_{\hat{\beta}_1}, \hat{\beta}_1+ 1.96 \times \hat{\sigma}_{\hat{\beta}_1}\right]\]</span></p>
+</div></li>
+</ul>
+<!-- - Random sampling implies that the **confidence interval limits are random variables** -->
+</section><section id="interpretation-of-a-95-confidence-interval" class="slide level2">
+<h2>Interpretation of a 95%-confidence interval</h2>
+<ul>
+<li><p><span class="math inline">\(CI_{\beta_1,0.95}\)</span> is the set of <span class="math inline">\(\beta_1\)</span>-values that are not rejected by a two-sided <span class="math inline">\(t\)</span>-test with a 5% significance level</p></li>
+<li><p><span class="math inline">\(CI_{\beta_1,0.95}\)</span> is also a interval that has a 95% <strong>coverage probability</strong> of containing the true value <span class="math inline">\(\beta_1\)</span></p></li>
+</ul>
+</section><section id="constructing-a-95-confidence-interval" class="slide level2">
+<h2>Constructing a 95%-confidence interval</h2>
+<ul>
+<li><p>Estimated regression model:</p>
+<p><span class="math display">\[\widehat{Score}_i = \underset{(10.360)}{698.9} -\underset{(0.520)}{2.28} STR_i\]</span> <span class="math display">\[R^2 = 0.051; \,\, SER = 18.58\]</span></p></li>
+<li><p>95% confidence interval for <span class="math inline">\(\beta_1\)</span>:</p>
+<p><span class="math display">\[\begin{multline*}
+\bigg[-2.28-1.96 \times 0.52, -2.28+ 1.96 \times 0.52\bigg] \\
+= \bigg[ -3.30,-1.26\bigg]
+\end{multline*}\]</span></p></li>
+</ul>
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE} -->
+<!-- # Regression output with heteroskedastic robust SEs -->
+<!-- parameters(lm1, robust = TRUE, vcov_type = "HC1") -->
+<!-- ``` -->
+</section></section>
+<section id="questions-from-the-audience" class="title-slide slide level1"><h1>Questions from the audience</h1></section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'none', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          numbers: true,
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
